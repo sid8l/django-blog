@@ -1,1 +1,15 @@
-{{ post.text }}
+
+<h1>{{ post.text }}</h1>
+
+<hr>
+{% for comment in ordered_comments %}
+    <p>{{ comment.text }}</p>
+    <small>Комментарий был отправлен {{comment.pub_date|date:"j E Y в H:i"}}</small>
+{% endfor %}
+
+<form action="{% url 'posts:add_comment' post.id %}" method="POST">
+    {% csrf_token %}
+    <p>Введите ваш комментарий</p>
+    <textarea name="comment" cols="60" rows="5"></textarea>
+    <input type="submit" value="Отправить">
+</form>

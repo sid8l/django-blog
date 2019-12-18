@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, reverse
 
 from posts.models import Post
 
@@ -11,4 +12,15 @@ def index(request):
 
 def detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    return render(request, 'posts/detail.html', {'post': post})
+    ordered_comments = post.comment_set.order_by('-pub_date')
+    context = {
+        'post': post,
+        'ordered_comments': ordered_comments,
+    }
+    return render(request, 'posts/detail.html', context)
+
+
+def add_comment(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.comment_set.create(text=request.POST['comment'])
+    return HttpResponseRedirect(reverse('posts:detail', args=(post_id,)))
