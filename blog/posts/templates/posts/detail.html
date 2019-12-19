@@ -2,7 +2,7 @@
 <h1>{{ post.text }}</h1>
 
 <hr>
-{% for comment in ordered_comments %}
+{% for comment in post.get_ordered_comments %}
     <p>{{ comment.text }}</p>
     <small>Комментарий был отправлен {{comment.pub_date|date:"j E Y в H:i"}}</small>
 {% endfor %}

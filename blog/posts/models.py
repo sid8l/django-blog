@@ -10,6 +10,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_ordered_comments(self):
+        return self.comment_set.order_by("-pub_date")
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
