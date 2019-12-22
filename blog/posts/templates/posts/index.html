@@ -1,9 +1,22 @@
-{% if latest_post_list %}
-    <ul>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-8">
+    {% if latest_post_list %}
         {% for post in latest_post_list %}
-            <li><a href="{% url 'posts:detail' post.id %}">{{post.title}}</a></li>
+            <div class="blog-post">
+                <h2 class="blog-post-title"><a href="{% url 'posts:detail' post.id %}" >{{ post.title }}</a></h2>
+                <p class="blog-post-meta"></p>
+                <p>{{ post.text }}</p>
+            </div>
+            <hr>
         {% endfor %}
-    </ul>
-{% else %}
+    {% else %}
     <p>База еще пустует :(</p>
-{% endif %}
+    {% endif %}
+    </div>
+    <div class="col-4">
+    </div>
+</div>
+{% endblock %}
