@@ -29,7 +29,6 @@ class DetailView(generic.DetailView):
         return context
 
 
-
 def add_comment(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     post.comment_set.create(text=request.POST['comment'])
