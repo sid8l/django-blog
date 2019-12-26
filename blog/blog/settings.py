@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['172.17.117.215']
 
 INSTALLED_APPS = [
     'posts.apps.PostsConfig',
+    'register.apps.RegisterConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

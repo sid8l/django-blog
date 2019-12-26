@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('admin/', admin.site.urls),
     path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('register/', include('register.urls')),
 ]
