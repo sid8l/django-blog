@@ -16,11 +16,11 @@
             <a class="nav-link disabled" href="#">Привет, {{ user.get_username }} </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+            <a class="nav-link" href="{% url 'register:logout' %}">Выйти</a>
           </li>
         {% else %}
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'login' %}">Войти</a>
+            <a class="nav-link" href="{% url 'register:login' %}">Войти</a>
           </li>
         {% endif %}
       </ul>

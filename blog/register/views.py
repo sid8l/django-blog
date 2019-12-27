@@ -7,10 +7,10 @@ def register(request):
     form = RegisterForm(request.POST)
     if form.is_valid():
         form.save()
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password1']
-        email = form.cleaned_data['email']
+        username = form.cleaned_data["username"]
+        password = form.cleaned_data["password1"]
+        email = form.cleaned_data["email"]
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect('index')
-    return render(request, 'registration/register.html', {'form': form})
+        return redirect("index")
+    return render(request, "registration/register.html", {"form": form})
